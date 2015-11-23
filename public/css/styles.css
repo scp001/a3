@@ -1,0 +1,394 @@
+body {
+    padding-top: 60px; /* shift container to bottom of heading */
+    background-color: black;
+    color: white;
+    background-image: url('../img/imax.jpg');
+    background-size: cover;
+}
+
+.brand {
+    font-family: 'Arvo';
+}
+
+a.plain:link {
+    color: #FFF;
+    text-decoration: none;
+}
+
+a.plain:active {
+    color: #FFF;
+    text-decoration: none;
+}
+
+a.plain:visited {
+    color: #FFF;
+    text-decoration: none;
+}
+
+a.plain:hover {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.status-bar {
+    height: 60px;
+}
+
+.about-icon {
+    float: left;
+    margin-right: 12px;
+}
+
+.footer {
+    color: #999;
+    text-align: right;
+    padding-top: 0.5em;
+    padding-right: 1em;
+}
+
+.footer > p {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
+.active {
+    color: blue;
+}
+
+.alert {
+    display: none;
+}
+
+.home-menu {
+	font-size: 125%;
+}
+
+h5 {
+    width: 100%;
+    white-space: nowrap;
+    margin-bottom: 4px;
+}
+
+.thumbnail {  /* box including image and description */
+    font-size: 80%;
+    position: relative;
+    border-width: 1px;
+    border-radius: 4px;
+    border-color: #25383C;
+    background-color:#000000;
+    color: #FFFFFF !important;
+    padding: 0px;
+    margin-right: 5px;
+    font-family: ariel, sans-serif;
+    text-align: right;
+    z-index: 1;  /* support overlay of rating markup */
+    display: flex;  /* CSS3 to enable ellipsis elision of overflow content */
+}
+
+.thumbnail .details {
+    padding: 0 1em;
+    white-space: nowrap;  /* works with display: flex */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.thumbnail .ratingBox {
+    z-index:2;
+    background-color: black;
+    width: 15%;
+    float: right;
+}
+
+.thumbnail .ratingBox img {
+    width: 50%;  /* of parent */
+    margin: 3% 25%;
+}
+
+.thumbnail .ratingBox .rating {
+    font-size: 2vw;
+    color: red;
+    max-width: 100%;
+    text-align: center;
+}
+
+/* for ref, Bootstrap breakpoints are < 768, 768-991, 992-1199, 1200- */
+@media screen and (min-width:768px) and (max-width:1200px) {
+    .thumbnail .ratingBox .rating {
+        font-size: 1.20vw;
+    }
+}
+
+@media screen and (min-width:1201px) {
+    .thumbnail .ratingBox .rating {
+        font-size: 0.65vw;
+    }
+}
+
+img.thumbnail {
+    height: auto;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+img.editImage {
+    padding: 0;
+}
+
+.well.editImage {
+    padding: 0;
+    margin: 0;
+}
+
+/* body text is white on black bgd but form-inputs are black on white bgd */
+input, textarea {
+    color: black;
+}
+
+textarea.col-sm-9 {
+    width: 75%;  /* override Bootstrap form-control class default 100%-width */
+}
+
+.help-block {
+    color: red;
+}
+
+.thumbnails li {
+    margin-left: 0px !important;
+    margin-right: 15px !important;
+}
+
+legend {
+    font-family: 'Andika';
+    margin-bottom: 4px;   /* A1 Step 3 */
+}
+
+.home-hero {
+    font-family: "Andika";
+    font-size: 36;
+    color: white;
+    background-image: url('../img/imax.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: -19px;  /* is there a cleaner way to do this? */
+    padding: 180px;
+    text-align : center;
+    text-shadow: 1px 1px 1px #000;
+}
+
+@media only screen and ( max-width : 1000px ) {
+    .home-hero {
+        padding:100px;
+    }
+}
+
+@media only screen and ( max-width : 480px ) {
+    .home-hero {
+        padding:32px;
+    }
+}
+
+.editActions {
+    text-align: center;
+}
+
+.editActions .btn {
+    padding: .5em;
+    margin-bottom: .5em;
+}
+
+.home-hero .btn {
+    font-family: "arvo";
+    /*width: 160px;*/
+    margin: 10px 6px;
+    border-radius: 4px;
+	color: white;
+	background-color: #023659; /*darkblue;*/
+	white-space: normal; 
+	text-align: middle;
+	max-width: 200px;
+}
+
+.well h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+label input[type="file"] {
+    display:none;  /* don't show the default browser file-input button */
+}
+
+.uploadLabel:hover {
+    background: #44D
+}
+
+label.control-label {  /* bootstrap default is 5px which is too large */
+    margin-bottom: .1em;
+}
+
+.fileInput {
+    margin-top: -2px;
+}
+
+#signoutUser {
+    text-align: center;
+    margin-bottom: 0.7em;
+}
+
+.dropdown-menu {
+    padding: 15px 15px 0px;
+}
+
+#signup_username, #username, #password {
+    margin-bottom: 0px;
+}
+
+#remember {
+    float: left; 
+    margin-right: 10px;
+}
+
+/* div to wrap review columns, horizontal padding supplements margin */
+.review_columns {
+	padding: 0 1%; 
+}
+
+.reviews p:first-child { 		
+	font-weight:bold;
+	font-size:8pt;
+	padding:8px;
+	border-style:solid;
+	border-width:2px;
+	border-color:green;
+	background-color: #FFFFE0; /*#E8DC9B;*/
+	color:black;
+	border-radius: 10px;
+	overflow:hidden;  /* enlarge comment as needed to accommodate img */ 
+}
+
+.reviews p+p {
+	margin-bottom:3em;
+}
+
+.reviews p span {
+	font-style:italic;
+}
+
+#reviews h3 {
+	margin-left: 1em;
+}
+
+.rate img {
+	height:83px;
+	float:left;
+}
+
+/* reviewer score in review-panel heading */
+.scoring {
+	color:red;
+	font-size:14pt;
+	font-weight:bold;
+}
+
+#reviewSave {
+    margin-top: .2em;
+    padding: .5em;
+}
+
+.dropdown {
+    	color:black;
+}
+/* end reviews_panel */
+
+#movieimg .photoUpload {
+	color: blue;
+	background: white;
+	padding: 0 0.25em;
+}
+
+label.fileInput {
+    float:right;
+    vertical-align:middle;
+    padding:0 0.25em;
+    margin 0 .5em 0 0;
+}
+
+p.buttonInstructions {
+    text-align:right;
+    width:70%;
+    position:relative;
+    vertical-align: middle;
+    right:.5em;
+    line-height: 120%;
+}
+
+input.fileImage {
+    margin: 0.2em .5em 0 0;
+    max-width:30%;
+}
+
+div.imageSelect {
+    margin-right: 1em;
+}
+
+/* poster image drop element */
+#dropImage { margin-bottom: .5em; }
+
+#dropImage.active { border: solid red; }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* swatch on browse view */
+span.swatch {
+    position: absolute;
+    top: 35%;
+    left: .1em;
+    width: 25%;
+    height: 100%;
+    font-weight: bold;
+    font-size: 110%;
+    text-align: center;
+    margin-left: .3em;
+    color: white;
+}
+/* details-view swatch has slightly different horizontal alignment */
+span.swatch.details {
+    position: absolute;
+    top: 35%;
+    left: 0em;
+    width: 25%;
+    height: 100%;
+    font-weight: bold;
+    font-size: 110%;
+    text-align: left;
+    margin-left: .3em;
+    color: white;
+}
+.noswatch {
+    position: absolute;
+    top: .2em;
+    right: .2em;
+    width: 70%;
+    overflow: hidden;
+    white-space: nowrap;  /* works with display: flex */
+    text-overflow: ellipsis;
+}
+div.freshswatch {
+    background-image: url("../img/fresh_lg.png");
+    background-size: contain;  /* adjust to be contained within bkgd area */
+    background-repeat: no-repeat;
+    vertical-align: center;
+    position: relative;
+    width: 100%;
+    height: 68px;
+}
+div.rottenswatch {
+    background-image: url("../img/rotten_lg.png");
+    background-size: contain;  /* adjust to be contained within bkgd area */
+    background-repeat: no-repeat;
+    vertical-align: center;
+    position: relative;
+    width: 100%;
+    height: 68px;
+}

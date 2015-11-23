@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Splat!</title>
+    <!--ensure devices display responsive-bootstrap pages properly-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+  </head>
+  <body>
+    <header class="header"></header>
+
+    <main class="container-fluid"> 
+      <div class="row" id="mainrow">
+
+          <div id="content">  <!-- implicitly a single column within row -->
+	  </div>
+
+      </div>  <!-- row -->
+    </main>  <!-- container -->
+
+    <footer class="footer">&copy; 2015 Your Name or Organization</footer>
+
+    <!-- load scripts at end of document for performance -->
+    <script src="js/lib/jquery-min.js"></script>
+    <script src="js/lib/underscore-min.js"></script>
+    <script src="js/lib/backbone-min.js"></script>
+    <script src="js/lib/backbone.localStorage.js"></script>
+    <script src="js/lib/bootstrap-min.js"></script>
+
+    <script src="js/utils.js"></script>
+    <!-- set CSRF token -->
+    <script type="text/javascript">
+	splat.token = '<%= csrftoken %>';
+    </script>
+    <script src="js/models/review.js"></script>
+    <script src="js/collections/reviews.js"></script>
+    <script src="js/models/movie.js"></script>
+    <script src="js/collections/movies.js"></script>
+    <script src="js/models/user.js"></script>
+    <script src="js/collections/users.js"></script>
+    <script src="js/views/home.js"></script>
+    <script src="js/views/header.js"></script>
+    <script src="js/views/signup.js"></script>
+    <script src="js/views/signin.js"></script>
+    <script src="js/views/about.js"></script>
+    <script src="js/views/movie.js"></script>
+    <script src="js/views/movies.js"></script>
+    <script src="js/views/movieform.js"></script>
+    <script src="js/views/movieimg.js"></script>
+    <script src="js/views/details.js"></script>
+    <script src="js/views/reviewer.js"></script>
+    <script src="js/views/reviewthumbs.js"></script>
+    <script src="js/views/reviewsview.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

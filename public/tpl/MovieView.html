@@ -1,0 +1,31 @@
+<div class="thumbnails col-lg-2 col-md-3 col-sm-4 col-xs-6" accept-charset="UTF-8">
+ <div class="thumbnail plain" title="click thumbnail to review or edit movie">
+
+ <div class="moviedetails">  <!-- keep Reviews-link with details -->
+  <a href="#movies/<%= _id %>" class="plain">
+   <!--<div class="embed-responsive embed-responsive-4by3">   Asst 2 -->
+    <video class="img-responsive" controls poster="<%= poster %>"
+		preload="none">  <!-- note "metadata" value stalls -->
+            <source src="<%= trailer %>" type="video/mp4"
+		onerror='console.log("error in video retrieval")'/>
+            <!-- fallback -->
+            Your browser does not support the <code>video</code> element.
+    </video>
+   <!--</div>   Asst 2 -->
+
+   <div class="<% if ((freshTotal/freshVotes) >= 0.5) { %>freshswatch<% } else { %>rottenswatch<% } %>">
+    <!--<div class="swatch">-->
+    <span class="noswatch">
+      <strong style="font-size:120%"><%= title %></strong> (<%= new Date(released).getFullYear() %>)<br/>
+      <strong>Director: </strong><%= director %><br/>
+      <strong>Genre(s): </strong><%= genre %><br/>
+      <strong>Runtime: </strong><%= duration %>min,  Rating: <%= rating %>
+    </span>
+   </a>
+   <a href="#movies/<%= _id %>/reviews" class="plain"><span class="swatch">
+	<% if (freshTotal === 0 && freshVotes === 0) { %>N/A<% }
+	   else {%><%= ((freshTotal/freshVotes)*100).toFixed(0) %>% (<%= freshVotes %>)<% } %></span></a>
+   </div>
+ </div>
+ </div>
+</div>

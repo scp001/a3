@@ -1,0 +1,60 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+    	<div class="navbar-header">
+
+	    <!-- when header collapses, display a dropdown with 3 icon-bar's -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand home-menu" href="#">Splat!</a>
+	</div>
+
+            <div id="nav-collapse" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav pull-left">
+		    <li id="orderdrop" class="browse-menu dropdown">
+                        <a id="ordering" href="#movies" >Browse Movies</a>
+                        <div class="dropdown-menu" id="orderView">
+			<form id="OrderView">
+			  <fieldset>
+			    <h4>Sort Order</h4>
+			    <input class="sortOrder" name="sortOrder" type="radio" value="title" />
+			        <label for="sortOrder">Title</label><br/>
+			    <input class="sortOrder" name="sortOrder" type="radio" value="director" />
+			        <label for="sortOrder">Director</label><br/>
+			    <br/>
+			  </fieldset>
+			</form>
+
+                        </div>
+                    </li>
+                    <li id="addMovie" class="add-menu" ><a href="#movies/add">
+			<span class="icon-edit icon-white"></span>Add Movie</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown" id="signupdrop">
+                        <a class="dropdown-toggle" id="register" href="#"
+			data-toggle="dropdown">Sign Up<strong class="caret"></strong></a>
+                        <div id="signupDiv" class="dropdown-menu"
+				style="padding: 15px; padding-bottom: 8px;">
+                        </div>
+                    </li>
+
+                    <li class="dropdown" id="signindrop">
+                        <a class="dropdown-toggle" id="greet" href="#"
+			data-toggle="dropdown">Sign In<strong class="caret"></strong></a>
+                        <div id="signinDiv" class="dropdown-menu"
+				style="padding: 15px; padding-bottom: 8px;">
+                        </div>
+                    </li>
+
+                    <li class="about-menu"><a href="#about">About</a></li>
+                </ul>
+            </div> <!--/.nav-collapse -->
+        </div>
+    </div>
+</nav>
+<div class="alert alert-success"></div>

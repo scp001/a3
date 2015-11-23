@@ -1,0 +1,12 @@
+<div class="reviews col-lg-2 col-md-3 col-sm-4 col-xs-6">
+    <p>
+        <img src="img/<% if (freshness === 1)
+	    { %>fresh<% } else { %>rotten<% } %>.gif" alt="Rating Image"/>
+        <q><%= reviewtext %></q>
+    </p>
+    <p>
+        <img src="img/critic.gif" alt="Critic"/> <%= reviewname %> <br>
+        <span><%= reviewaffil %></span>
+    </p>
+</div>
+

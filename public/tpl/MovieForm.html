@@ -1,0 +1,81 @@
+<!-- note form name attributes match Movie model attribute names so no mapping
+     is needed - same idea as JSP mapping to Bean fields -->
+<div class="form-horizontal">
+
+<!--
+    <input type="button" id="moviesave" class="btn btn-primary save authclass" name="save" value="Save Changes"/>
+    <input type="button" id="moviedel" class="btn btn-danger delete authclass" name="delete" value="Delete Movie"/>
+-->
+
+   <div class="form-group">
+     <label for="title" class="col-sm-3 control-label">Title</label>
+       <input type="text" class="col-sm-9 authattr"
+		name="title" placeholder="e.g. Day of the Jackal"
+		value="<%= title %>"/>
+         <span class="help-block"></span>
+   </div>
+
+   <div class="form-group">
+     <label for="released" class="col-sm-3 control-label">Released</label>
+       <input type="text" class="col-sm-9 authattr released"
+		placeholder="e.g. 2001"
+		name="released" value="<%= released %>"/>
+         <span class="help-block"></span>
+   </div>
+
+   <div class="form-group">
+     <label for="director" class="col-sm-3 control-label">Director</label>
+       <input type="text" class="col-sm-9 authattr director"
+		placeholder="e.g. Steven Speilberg"
+		name="director" value="<%= director %>"/>
+         <span class="help-block"></span>
+   </div>
+
+   <div class="form-group">
+     <label for="rating" class="col-sm-3 control-label">Rating</label>
+       <input type="text" class="col-sm-9 authattr rating"
+		placeholder="e.g. G, PG, PG-13, R"
+		name="rating" value="<%= rating %>"/>
+         <span class="help-block"></span>
+   </div>
+
+   <div class="form-group">
+     <label for="starring" class="col-sm-3 control-label">Starring</label>
+       <input type="text" id="starring" class="col-sm-9 authattr starring"
+		placeholder="e.g. Steve Martin, John Belushi"
+		name="starring" value="<%= starring %>"/>
+         <span class="help-block"></span>
+   </div>
+
+   <div class="form-group">
+     <label for="duration" class="col-sm-3 control-label">Duration</label>
+       <input type="text" id="duration" class="col-sm-9 authattr duration"
+		placeholder="e.g. 122 minutes"
+		name="duration" value="<%= duration %>"/>
+         <span class="help-block"></span>
+   </div>
+
+   <div class="form-group">
+     <label for="genre" class="col-sm-3 control-label">Genre(s)</label>
+       <input type="text" id="genre" class="col-sm-9 authattr genre"
+	 name="genre" placeholder="e.g. comedy, thriller, action"
+         value="<% if (typeof(genre) != 'undefined' && typeof(genre) != null) { %><%= genre %><% } %>"/>
+         <span class="help-block"></span>
+   </div>
+
+   <div class="form-group">
+     <label for="synopsis" class="col-sm-3 control-label">Synopsis</label>
+         <textarea class="col-sm-9 authattr synopsis form-control" id="synopsis"
+		placeholder="summary of the movie plot"
+		name="synopsis" rows="5" ><%= synopsis %></textarea> <br/>
+         <span class="help-block"></span>
+   </div>
+
+   <div class="form-group">
+     <label for="trailer" class="col-sm-3 control-label">Trailer URL</label>
+       <input type="text" id="trailer" class="col-sm-9 authattr trailer"
+		placeholder="e.g. https://www.archive.org/..."
+		name="trailer" value="<%= trailer %>"/>
+         <span class="help-block"></span>
+   </div>
+</div>

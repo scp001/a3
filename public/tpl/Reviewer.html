@@ -1,0 +1,43 @@
+<form enctype="multipart/form-data" >
+  <fieldset>
+    <div class="reviewAttrs" style="font-size:80%; color: white">
+         <p>
+            <input class="rating reviewform" name="freshness" type="radio" value="1" 
+		<% if (freshness === "1") { %>checked<% } %> />
+                       <label for="freshness">Fresh</label>
+                                <img src="img/fresh.gif" alt="Rating Image">
+            <input class="rating reviewform" name="freshness" type="radio" value="0" 
+		<% if (freshness === "0") { %>checked<% } %> />
+                       <label for="freshness">Rotten</label>
+                                <img src="img/rotten.gif" alt="Rating Image">
+	       <span class="scoring">
+	         &nbsp;&nbsp;&nbsp;&nbsp; currently rated: <span id="scoreView"></span><span id="scoreCount"></span>
+	       </span>
+          </p>
+          <div class="form-group">
+            <label for="venue" class="control-label">Enter your review</label>
+            <textarea class="reviewform" id="reviewtext" name="reviewtext" rows="5" style="width:100%" ><%= reviewtext %></textarea> <br/>
+                <span class="help-block"></span>
+          </div>
+
+	<div class="form-inline">
+          <span class="form-group">
+            <label for="reviewname" class="control-label">Name</label>
+            <input class="reviewform" type="text" id="reviewname"
+		name="reviewname" value="<%= reviewname %>" /> <br/>
+                <span class="help-block"></span>
+          </span>
+
+          <span class="form-group">
+            <label for="reviewaffil" class="control-label">Affiliation</label>
+            <input class="reviewform" type="text" id="reviewaffil"
+		name="reviewaffil" value="<%= reviewaffil %>" /> <br/>
+                <span class="help-block"></span>
+          </span>
+	</div>
+
+            <input type="button" id="reviewsave" class="btn btn-success review authclass" name="reviewsave" value="Review Movie"/>
+                        </p>
+      </div>
+  </fieldset>
+</form>

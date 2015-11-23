@@ -1,0 +1,10 @@
+<span class="scoreSpan">
+  <!-- select rating-icon to match rating -->
+  <img src="img/<% if ((freshTotal/freshVotes) >= 0.5) { %>fresh<% }
+		   else { %>rotten<% } %>.gif" />
+  <span id="thumbRating" class="rating">
+    <% if (freshTotal === 0 && freshVotes === 0) { %>N/A<% }
+       else {%><%= ((freshTotal/freshVotes)*100).toFixed(0) %>% 
+	(<%= freshVotes %>)<% } %>
+   </span>
+</span>
