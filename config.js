@@ -1,9 +1,9 @@
 module.exports = {
 	sessionSecret: 'ninja',
-	port : 41484,
+	sessionTimeout : 1000*60*2,
+	port : 41485,
 	env : 'dev', // 'default', 'short', 'tiny', 'dev'
 	dbuser: "songzhi",
 	dbpass: "songzhi",
 	dbname: "songzhi",
-	sessionTimeout : 1000*60*2,
 }

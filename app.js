@@ -6,7 +6,7 @@
  * exported from that file (with "exports") can now be dotted off
  * the value returned by require(), in this case e.g. splat.api
  */
-var http = require("http"),
+var https = require("https"),
     express = require("express"),
     fs = require("fs"),
     path = require("path"),
@@ -21,22 +21,27 @@ var http = require("http"),
     errorHandler = require("errorhandler"),
     basicAuth = require("basic-auth-connect"),  // add for HTTP auth
 
+    csrftoken = require("csurf"),   // for CSRF token
+
     // config is an object module, that defines app-config attribues,
     // such as "port"
     config = require("./config"),
     splat = require('./routes/splat.js');  // route handlers
 
+var options = {
+    key: fs.readFileSync('key.pem'), //RSA private-key
+    cert: fs.readFileSync('cert.pem'), // RSA public-key certificate
+};
+
 // middleware check that req is associated with an authenticated session
 function isAuthd(req, res, next) {
-    // A3 ADD CODE BLOCK
-        return next();
+    return next();
 };
 
 // middleware check that the session-userid matches the userid passed
 // in the request body, e.g. when deleting or updating a model
 function hasPermission(req, res, next) {
-    // A3 ADD CODE BLOCK
-        return next();
+    return next();
 };
 
 // Create Express app-server
@@ -66,12 +71,27 @@ app.use(session({
 	name: 'splat.sess',
 	secret: config.sessionSecret,  // A3 ADD CODE
 	rolling: true,  // reset session timer on every client access
-	cookie: { maxAge:config.sessionTimeout,  // A3 ADD CODE
-		  // maxAge: null,  // no-expire session-cookies for testing
-		  httpOnly: true },
+	cookie: { 
+        maxAge:config.sessionTimeout,  // A3 ADD CODE
+		// maxAge: null,  // no-expire session-cookies for testing
+		httpOnly: true,
+        secure: true, // add secure flag
+    },
 	saveUninitialized: false,
 	resave: false
 }));
+
+// use csrftoken
+app.use(csrftoken());
+
+// Setup for rendering csurf token into index.html at app-startup
+app.engine('.html', require('ejs').__express);
+app.set('views', __dirname + '/public');
+// When client-side requests index.html, perform template substitution on it
+app.get('/index.html', function(req, res) {
+    // req.csrfToken() returns a fresh random CSRF token value
+    res.render('index.html', {csrftoken: req.csrfToken()});
+});
 
 // checks req.body for HTTP method overrides
 app.use(methodOverride());
@@ -129,8 +149,18 @@ app.use(function (req, res) {
     res.status(404).send('<h3>File Not Found</h3>');
 });
 
+// error-handling Express middleware function
+app.use(function(err, req, res, next) {
+    if(err.code == 'EBADCSRFTOKEN'){
+        res.status(403).send("Please reload the page to get a fresh CSRF token value.");
+    }else{
+        // hand off control to the next callback
+        return next(err);
+    }
+});
+
 // Start HTTP server
-http.createServer(app).listen(app.get('port'), function (){
+var a = https.createServer(options, app).listen(app.get('port'), function (){
   console.log("Express server listening on port %d in %s mode",
                 app.get('port'), config.env );
 });

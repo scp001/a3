@@ -16,7 +16,7 @@
           </p>
           <div class="form-group">
             <label for="venue" class="control-label">Enter your review</label>
-            <textarea class="reviewform" id="reviewtext" name="reviewtext" rows="5" style="width:100%" ><%= reviewtext %></textarea> <br/>
+            <textarea class="reviewform" id="reviewtext" name="reviewtext" rows="5" style="width:100%" ><%- reviewtext %></textarea> <br/>
                 <span class="help-block"></span>
           </div>
 
@@ -24,14 +24,14 @@
           <span class="form-group">
             <label for="reviewname" class="control-label">Name</label>
             <input class="reviewform" type="text" id="reviewname"
-		name="reviewname" value="<%= reviewname %>" /> <br/>
+		name="reviewname" value="<%- reviewname %>" /> <br/>
                 <span class="help-block"></span>
           </span>
 
           <span class="form-group">
             <label for="reviewaffil" class="control-label">Affiliation</label>
             <input class="reviewform" type="text" id="reviewaffil"
-		name="reviewaffil" value="<%= reviewaffil %>" /> <br/>
+		name="reviewaffil" value="<%- reviewaffil %>" /> <br/>
                 <span class="help-block"></span>
           </span>
 	</div>

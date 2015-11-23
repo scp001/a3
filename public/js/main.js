@@ -144,6 +144,14 @@ Backbone.View.prototype.close = function () {
 
 };
 
+Backbone.ajax = function() {
+    // Invoke $.ajaxSetup in the context of Backbone.$
+    Backbone.$.ajaxSetup.call(Backbone.$, {beforeSend: function(jqXHR){
+        jqXHR.setRequestHeader("X-CSRF-Token", splat.csrftoken);
+    }});
+    return Backbone.$.ajax.apply(Backbone.$, arguments);
+};
+
 splat.utils.loadTemplates(['Home', 'Header', 'About', 'MovieThumb',
 	'Details', 'MovieForm', 'MovieImg', 'Reviewer', 'ReviewsView',
 	'Signup', 'Signin'], function() {

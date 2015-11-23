@@ -27,7 +27,7 @@ splat.Reviewer = Backbone.View.extend({
         var change = {};
         // Apply change to the model;
         // change event triggered once for each field-value change
-        change[event.target.name] = event.target.value;
+        change[event.target.name] = _.escape(event.target.value);
         // reflect changes in the model
         this.model.set(change);
     },

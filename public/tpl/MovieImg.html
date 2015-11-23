@@ -2,10 +2,10 @@
   <div class="editActions <% if ((freshTotal/freshVotes) >= 0.5) {
 		 %>freshswatch<% } else { %>rottenswatch<% } %>">
         <% if (typeof(_id) !== 'undefined' && typeof(_id) !== null) { %>
-    	    <a href="#movies/<%= _id %>/reviews" class="plain">
+    	    <a href="#movies/<%- _id %>/reviews" class="plain">
 		<span class="swatch details">
-		<%= ((freshTotal/freshVotes)*100).toFixed(0) %>%
-		(<%= freshVotes %>)</span></a>
+		<%- ((freshTotal/freshVotes)*100).toFixed(0) %>%
+		(<%- freshVotes %>)</span></a>
         <% } %>
     <span class="noswatch">
     <input type="button" id="moviesave" class="btn btn-primary save authclass"
@@ -17,7 +17,7 @@
 
 <div>
   <p id="dropImage">
-    <img id="editImage" class="editImage img-responsive" src="<%= poster %>"/>
+    <img id="editImage" class="editImage img-responsive" src="<%- poster %>"/>
   </p>
 
   <div class="imageSelect">

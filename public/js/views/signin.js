@@ -31,7 +31,7 @@ splat.Signin = Backbone.View.extend({
 
         // Apply change to the model;
         // change is triggered once for each changed field-value
-        change[e.target.name] = (e.target.value);
+        change[e.target.name] = _.escape(e.target.value);
         // reflect changes in the model
         this.model.set(change);
         var check = this.model.validateItem(e.target.name);

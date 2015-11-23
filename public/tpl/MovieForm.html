@@ -11,7 +11,7 @@
      <label for="title" class="col-sm-3 control-label">Title</label>
        <input type="text" class="col-sm-9 authattr"
 		name="title" placeholder="e.g. Day of the Jackal"
-		value="<%= title %>"/>
+		value="<%- title %>"/>
          <span class="help-block"></span>
    </div>
 
@@ -19,7 +19,7 @@
      <label for="released" class="col-sm-3 control-label">Released</label>
        <input type="text" class="col-sm-9 authattr released"
 		placeholder="e.g. 2001"
-		name="released" value="<%= released %>"/>
+		name="released" value="<%- released %>"/>
          <span class="help-block"></span>
    </div>
 
@@ -27,7 +27,7 @@
      <label for="director" class="col-sm-3 control-label">Director</label>
        <input type="text" class="col-sm-9 authattr director"
 		placeholder="e.g. Steven Speilberg"
-		name="director" value="<%= director %>"/>
+		name="director" value="<%- director %>"/>
          <span class="help-block"></span>
    </div>
 
@@ -35,7 +35,7 @@
      <label for="rating" class="col-sm-3 control-label">Rating</label>
        <input type="text" class="col-sm-9 authattr rating"
 		placeholder="e.g. G, PG, PG-13, R"
-		name="rating" value="<%= rating %>"/>
+		name="rating" value="<%- rating %>"/>
          <span class="help-block"></span>
    </div>
 
@@ -43,7 +43,7 @@
      <label for="starring" class="col-sm-3 control-label">Starring</label>
        <input type="text" id="starring" class="col-sm-9 authattr starring"
 		placeholder="e.g. Steve Martin, John Belushi"
-		name="starring" value="<%= starring %>"/>
+		name="starring" value="<%- starring %>"/>
          <span class="help-block"></span>
    </div>
 
@@ -51,7 +51,7 @@
      <label for="duration" class="col-sm-3 control-label">Duration</label>
        <input type="text" id="duration" class="col-sm-9 authattr duration"
 		placeholder="e.g. 122 minutes"
-		name="duration" value="<%= duration %>"/>
+		name="duration" value="<%- duration %>"/>
          <span class="help-block"></span>
    </div>
 
@@ -59,7 +59,7 @@
      <label for="genre" class="col-sm-3 control-label">Genre(s)</label>
        <input type="text" id="genre" class="col-sm-9 authattr genre"
 	 name="genre" placeholder="e.g. comedy, thriller, action"
-         value="<% if (typeof(genre) != 'undefined' && typeof(genre) != null) { %><%= genre %><% } %>"/>
+         value="<% if (typeof(genre) != 'undefined' && typeof(genre) != null) { %><%- genre %><% } %>"/>
          <span class="help-block"></span>
    </div>
 
@@ -67,7 +67,7 @@
      <label for="synopsis" class="col-sm-3 control-label">Synopsis</label>
          <textarea class="col-sm-9 authattr synopsis form-control" id="synopsis"
 		placeholder="summary of the movie plot"
-		name="synopsis" rows="5" ><%= synopsis %></textarea> <br/>
+		name="synopsis" rows="5" ><%- synopsis %></textarea> <br/>
          <span class="help-block"></span>
    </div>
 
@@ -75,7 +75,7 @@
      <label for="trailer" class="col-sm-3 control-label">Trailer URL</label>
        <input type="text" id="trailer" class="col-sm-9 authattr trailer"
 		placeholder="e.g. https://www.archive.org/..."
-		name="trailer" value="<%= trailer %>"/>
+		name="trailer" value="<%- trailer %>"/>
          <span class="help-block"></span>
    </div>
 </div>

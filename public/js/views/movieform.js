@@ -42,7 +42,7 @@ splat.MovieForm = Backbone.View.extend({
 
         // Apply the change to the model
         // note change is triggered once for each changed field value
-        change[event.target.name] = event.target.value;
+        change[event.target.name] = _.escape(event.target.value);
 	// starring and genre inputs are comma-separated string arrays
 	if (event.target.name === 'starring' || event.target.name === 'genre') {
 	    var list = event.target.value.split(",");

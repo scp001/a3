@@ -2,11 +2,11 @@
  <div class="thumbnail plain" title="click thumbnail to review or edit movie">
 
  <div class="moviedetails">  <!-- keep Reviews-link with details -->
-  <a href="#movies/<%= _id %>" class="plain">
+  <a href="#movies/<%- _id %>" class="plain">
    <!-- <div class="embed-responsive embed-responsive-4by3">   Asst 2 -->
-    <video class="img-responsive" controls poster="<%= poster %>"
+    <video class="img-responsive" controls poster="<%- poster %>"
 		preload="none">  <!-- note "metadata" value stalls -->
-            <source src="<%= trailer %>" type="video/mp4"
+            <source src="<%- trailer %>" type="video/mp4"
 		onerror='console.log("error in video retrieval")'/>
             <!-- fallback -->
             Your browser does not support the <code>video</code> element.
@@ -16,19 +16,19 @@
    <div class="<% if ((freshTotal/freshVotes) >= 0.5) { %>freshswatch<% } 
 		  else { %>rottenswatch<% } %>">
     <span class="noswatch">
-      <strong style="font-size:120%"><%= title %></strong> (<%= released %>)<br/>
-      <strong>Director: </strong><%= director %><br/>
-      <strong>Genre(s): </strong><%= genre %><br/>
-      <strong>Runtime: </strong><%= duration %>min,  Rating: <%= rating %>
+      <strong style="font-size:120%"><%- title %></strong> (<%- released %>)<br/>
+      <strong>Director: </strong><%- director %><br/>
+      <strong>Genre(s): </strong><%- genre %><br/>
+      <strong>Runtime: </strong><%- duration %>min,  Rating: <%- rating %>
     </span>
    </a>
    <% if (typeof(_id) !== 'undefined' && typeof(_id) !== null) { %>
-     <a href="#movies/<%= _id %>/reviews" class="plain">
+     <a href="#movies/<%- _id %>/reviews" class="plain">
    <% } %>  <!-- lazy coding, </a> left unprotected below -->
         <span class="swatch">
 	<% if (freshTotal === 0 && freshVotes === 0) { %>N/A<% }
-	   else {%><%= ((freshTotal/freshVotes)*100).toFixed(0) %>%
-		(<%= freshVotes %>)<% } %></span></a>
+	   else {%><%- ((freshTotal/freshVotes)*100).toFixed(0) %>%
+		(<%- freshVotes %>)<% } %></span></a>
    </div>
  </div>
  </div>

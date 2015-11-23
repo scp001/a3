@@ -2,11 +2,11 @@
     <p>
         <img src="img/<% if (freshness === 1)
 	    { %>fresh<% } else { %>rotten<% } %>.gif" alt="Rating Image"/>
-        <q><%= reviewtext %></q>
+        <q><%- reviewtext %></q>
     </p>
     <p>
-        <img src="img/critic.gif" alt="Critic"/> <%= reviewname %> <br>
-        <span><%= reviewaffil %></span>
+        <img src="img/critic.gif" alt="Critic"/> <%- reviewname %> <br>
+        <span><%- reviewaffil %></span>
     </p>
 </div>
 

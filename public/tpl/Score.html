@@ -4,7 +4,7 @@
 		   else { %>rotten<% } %>.gif" />
   <span id="thumbRating" class="rating">
     <% if (freshTotal === 0 && freshVotes === 0) { %>N/A<% }
-       else {%><%= ((freshTotal/freshVotes)*100).toFixed(0) %>% 
-	(<%= freshVotes %>)<% } %>
+       else {%><%- ((freshTotal/freshVotes)*100).toFixed(0) %>% 
+	(<%- freshVotes %>)<% } %>
    </span>
 </span>
