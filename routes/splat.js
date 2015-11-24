@@ -381,7 +381,7 @@ exports.auth = function (req, res) {
 						res.status(500).send("Unable to login at this time; please try again later " 
 											 + err.message);
 					}
-				}
+				});
 			}else{
 				res.status(403).send('Invalid username-password combination, please try again');
 			}
