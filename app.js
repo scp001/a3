@@ -35,15 +35,24 @@ var options = {
 
 // middleware check that req is associated with an authenticated session
 function isAuthd(req, res, next) {
-	// A3 ADD CODE BLOCK
-    return next();
+	
+    if (req.session.auth){
+		return next();
+	}else{
+		res.status(403).send("Please login to continue.");
+	}
 };
 
 // middleware check that the session-userid matches the userid passed
 // in the request body, e.g. when deleting or updating a model
 function hasPermission(req, res, next) {
-	// A3 ADD CODE BLOCK
-    return next();
+	
+	if (req.body.userid == req.session.userid){
+		return next();
+	}else{
+		res.status(403).send("You don't have permission!");
+	}
+   
 };
 
 // Create Express app-server
@@ -140,7 +149,7 @@ app.get('/index.html', function(req, res) {
 
 // error-handling Express middleware function
 app.use(function(err, req, res, next) {
-	res.status(403).send("Please reload the page to get a fresh CSRF token value.");
+	
     if(err.code == 'EBADCSRFTOKEN'){
         res.status(403).send("Please reload the page to get a fresh CSRF token value.");
     }else{
