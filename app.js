@@ -21,7 +21,7 @@ var https = require("https"),
     errorHandler = require("errorhandler"),
     basicAuth = require("basic-auth-connect"),  // add for HTTP auth
 
-    // csrftoken = require("csurf"),   // for CSRF token //CSRF added code
+    csrftoken = require("csurf"),   // for CSRF token
 
     // config is an object module, that defines app-config attribues,
     // such as "port"
@@ -75,7 +75,7 @@ app.use(session({
         maxAge:config.sessionTimeout,  // A3 ADD CODE
 		// maxAge: null,  // no-expire session-cookies for testing
 		httpOnly: true,
-        // secure: true, // add secure flag //CSRF added code
+        secure: true, // add secure flag
     },
 	saveUninitialized: false,
 	resave: false
@@ -87,6 +87,8 @@ app.use(csrftoken());
 // checks req.body for HTTP method overrides
 app.use(methodOverride());
 
+// load static html
+app.use(express.static(__dirname + ""));
 
 // App routes (API) - implementation resides in routes/splat.js
 
@@ -140,7 +142,6 @@ app.use(function (req, res) {
     res.status(404).send('<h3>File Not Found</h3>');
 });
 
-/* //CSRF added code
 // Setup for rendering csurf token into index.html at app-startup
 app.engine('.html', require('ejs').__express);
 app.set('views', __dirname + '/public');
@@ -152,7 +153,6 @@ app.get('/index.html', function(req, res) {
 
 // error-handling Express middleware function
 app.use(function(err, req, res, next) {
-	console.log(err);
     if(err.code == 'EBADCSRFTOKEN'){
         res.status(403).send("Please reload the page to get a fresh CSRF token value.");
     }else{
@@ -160,7 +160,6 @@ app.use(function(err, req, res, next) {
         return next(err);
     }
 });
-*/
 
 // Start HTTP server
 var a = https.createServer(options, app).listen(app.get('port'), function (){
