@@ -84,15 +84,6 @@ app.use(session({
 // use csrftoken
 app.use(csrftoken());
 
-// Setup for rendering csurf token into index.html at app-startup
-app.engine('.html', require('ejs').__express);
-app.set('views', __dirname + '/public');
-// When client-side requests index.html, perform template substitution on it
-app.get('/index.html', function(req, res) {
-    // req.csrfToken() returns a fresh random CSRF token value
-    res.render('index.html', {csrftoken: req.csrfToken()});
-});
-
 // checks req.body for HTTP method overrides
 app.use(methodOverride());
 
@@ -147,6 +138,15 @@ app.use(errorHandler({ dumpExceptions:true, showStack:true }));
 // Default-route middleware in case none of above match
 app.use(function (req, res) {
     res.status(404).send('<h3>File Not Found</h3>');
+});
+
+// Setup for rendering csurf token into index.html at app-startup
+app.engine('.html', require('ejs').__express);
+app.set('views', __dirname + '/public');
+// When client-side requests index.html, perform template substitution on it
+app.get('/index.html', function(req, res) {
+    // req.csrfToken() returns a fresh random CSRF token value
+    res.render('index.html', {csrftoken: req.csrfToken()});
 });
 
 // error-handling Express middleware function
