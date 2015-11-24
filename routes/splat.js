@@ -353,59 +353,67 @@ console.log('isAuth ', req.session);
 };
 
 exports.auth = function (req, res) {
-  if (req.body.login) {   // login request
-    var username = req.body.username;
-    var password = req.body.password;
-    if (!username || !password) {
-      res.status(403).send('Invalid username-password combination, please try again');
-    };
-    User.findOne({username:username}, function(err, user){
-      if (user !== null) {
-      /* A3 ADD CODE BLOCK ... */
-	  var sess = req.session;  // create session
-	  sess.auth = true;
-	  sess.username = username;
-	  sess.userid = user.id;
-	  // set session-timeout, from config file
-          if (req.body.remember) {
-              // if "remember me" selected on signin form,
-	      // extend session to 10*default-session-timeout
-	      // A3 ADD CODE BLOCK
-	  }
-          res.status(200).send({'userid': user.id, 'username': username});
-	  // A3 ADD CODE BLOCK
-      } else if (!err) {  // unrecognized username, but not DB error
-        res.status(403).send('Invalid username-password combination, please try again');
-      } else {  // error response from DB
-        res.status(500).send("Unable to login at this time; please try again later " 
-			+ err.message);
-      }
-    });
-  } else { // logout request
-    req.session.destroy(); // destroy session in the session-store
-    res.status(200).send({'userid': undefined, 'username': undefined});
-  };
+	if (req.body.login) {   // login request
+		var username = req.body.username;
+		var password = req.body.password;
+		if (!username || !password) {
+			res.status(403).send('Invalid username-password combination, please try again');
+		}
+		User.findOne({username:username}, function(err, user){
+			if (user !== null) {
+				bcrypt.compare(password, user.password, function(err, result){
+					if(result){
+						var sess = req.session;  // create session
+						sess.auth = true;
+						sess.username = username;
+						sess.userid = user.id;
+						// set session-timeout, from config file
+						if (req.body.remember) {
+							// if "remember me" selected on signin form,
+							// extend session to 10*default-session-timeout
+							req.session.cookie.maxAge = 10*req.session.cookie.maxAge;
+						}
+						res.status(200).send({'userid': user.id, 'username': username});
+						// A3 ADD CODE BLOCK
+					} else if (!err) {  // unrecognized username, but not DB error
+						res.status(403).send('Invalid username-password combination, please try again');
+					} else {  // error response from DB
+						res.status(500).send("Unable to login at this time; please try again later " 
+											 + err.message);
+					}
+				}
+			}else{
+				res.status(403).send('Invalid username-password combination, please try again');
+			}
+		});
+	} else { // logout request
+		req.session.destroy(); // destroy session in the session-store
+		res.status(200).send({'userid': undefined, 'username': undefined});
+	}
 };
 
 exports.signup = function(req, res) {
-  var user = new User(req.body);
-    /* A3 ADD CODE BLOCK ... */
+	var user = new User(req.body);
     // store the hashed-with-salt password in the DB
-      user.password = 0;  // A3 ADD CODE
-      user.save(function (serr, result) {
-        if (!serr) {
-          req.session.auth = true;
-          req.session.username = result.username;
-          req.session.userid = result.id;
-          res.status(200).send({'username':result.username, 'userid':result.id});
-        } else {
-          console.log(serr);
-          if (serr.err && serr.err.indexOf("E11000") !== -1) {
-            res.status(403).send("Sorry, username '"+user.username+
-                "' is already taken; please choose another username");
-          } else {
-            res.status(500).send("Unable to create account at this time; please try again later (" +serr.message+ ")");
-          }
-        }
-      });
+	bcrypt.genSalt(10, function(err, salt) {
+		bcrypt.hash(user.password, salt, function(err, hash) {
+			user.password = hash;
+			user.save(function (serr, result) {
+				if (!serr) {
+					req.session.auth = true;
+					req.session.username = result.username;
+					req.session.userid = result.id;
+					res.status(200).send({'username':result.username, 'userid':result.id});
+				} else {
+					console.log(serr);
+					if (serr.err && serr.err.indexOf("E11000") !== -1) {
+						res.status(403).send("Sorry, username '"+user.username+
+											 "' is already taken; please choose another username");
+					} else {
+						res.status(500).send("Unable to create account at this time; please try again later (" +serr.message+ ")");
+					}
+				}
+			});
+		}
+	}	
 };

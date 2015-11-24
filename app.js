@@ -19,9 +19,9 @@ var https = require("https"),
     methodOverride = require("method-override"),
     directory = require("serve-index"),
     errorHandler = require("errorhandler"),
-    basicAuth = require("basic-auth-connect"),  // add for HTTP auth
+    basicAuth = require("basic-auth-connect"),  // HTTP auth
 
-    csrftoken = require("csurf"),   // for CSRF token
+    csrftoken = require("csurf"),   // CSRF token
 
     // config is an object module, that defines app-config attribues,
     // such as "port"
@@ -35,12 +35,14 @@ var options = {
 
 // middleware check that req is associated with an authenticated session
 function isAuthd(req, res, next) {
+	// A3 ADD CODE BLOCK
     return next();
 };
 
 // middleware check that the session-userid matches the userid passed
 // in the request body, e.g. when deleting or updating a model
 function hasPermission(req, res, next) {
+	// A3 ADD CODE BLOCK
     return next();
 };
 
@@ -69,10 +71,10 @@ app.use(multer({dest: __dirname + '/public/img/uploads/'}));
 // Session config, based on Express.session, values taken from config.js
 app.use(session({
 	name: 'splat.sess',
-	secret: config.sessionSecret,  // A3 ADD CODE
+	secret: config.sessionSecret,
 	rolling: true,  // reset session timer on every client access
 	cookie: { 
-        maxAge:config.sessionTimeout,  // A3 ADD CODE
+        maxAge:config.sessionTimeout,
 		// maxAge: null,  // no-expire session-cookies for testing
 		httpOnly: true,
         secure: true, // add secure flag
@@ -127,6 +129,7 @@ app.put('/user', splat.auth);
 app.post('/user', splat.signup);
 
 // Setup for rendering csurf token into index.html at app-startup
+// Important: place it before static
 app.engine('.html', require('ejs').__express);
 app.set('views', __dirname + '/public');
 // When client-side requests index.html, perform template substitution on it
@@ -157,7 +160,7 @@ app.use(errorHandler({ dumpExceptions:true, showStack:true }));
 
 // Default-route middleware in case none of above match
 app.use(function (req, res) {
-    res.status(404).send('<h3>File Not Found</h3>');
+    res.status(404).send('<h3>Page not found</h3>');
 });
 
 // Start HTTP server
