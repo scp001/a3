@@ -74,7 +74,7 @@ var Review = mongoose.model('Review', ReviewSchema);
 // "exports" is used to make the associated name visible
 // outside this file (in particular to server.js)
 exports.api = function(req, res) {
-    res.send(200, '<h3>Splat! 0.2 API is running!</h3>');
+    res.status(200).send( '<h3>Splat! 0.3 API is running!</h3>');
 };
 
 // return movie requested by id parameter
