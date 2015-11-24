@@ -87,8 +87,6 @@ app.use(csrftoken());
 // checks req.body for HTTP method overrides
 app.use(methodOverride());
 
-// load static html
-app.use(express.static(__dirname + ""));
 
 // App routes (API) - implementation resides in routes/splat.js
 
@@ -128,6 +126,15 @@ app.put('/user', splat.auth);
 // User signup
 app.post('/user', splat.signup);
 
+// Setup for rendering csurf token into index.html at app-startup
+app.engine('.html', require('ejs').__express);
+app.set('views', __dirname + '/public');
+// When client-side requests index.html, perform template substitution on it
+app.get('/index.html', function(req, res) {
+    // req.csrfToken() returns a fresh random CSRF token value
+    res.render('index.html', {csrftoken: req.csrfToken()});
+});
+
 // location of static content
 app.use(express.static(__dirname +  "/public"));
 
@@ -142,17 +149,9 @@ app.use(function (req, res) {
     res.status(404).send('<h3>File Not Found</h3>');
 });
 
-// Setup for rendering csurf token into index.html at app-startup
-app.engine('.html', require('ejs').__express);
-app.set('views', __dirname + '/public');
-// When client-side requests index.html, perform template substitution on it
-app.get('/index.html', function(req, res) {
-    // req.csrfToken() returns a fresh random CSRF token value
-    res.render('index.html', {csrftoken: req.csrfToken()});
-});
-
 // error-handling Express middleware function
 app.use(function(err, req, res, next) {
+
     if(err.code == 'EBADCSRFTOKEN'){
         res.status(403).send("Please reload the page to get a fresh CSRF token value.");
     }else{
