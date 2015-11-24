@@ -135,6 +135,17 @@ app.get('/index.html', function(req, res) {
     res.render('index.html', {csrftoken: req.csrfToken()});
 });
 
+// error-handling Express middleware function
+app.use(function(err, req, res, next) {
+	res.status(403).send("Please reload the page to get a fresh CSRF token value.");
+    if(err.code == 'EBADCSRFTOKEN'){
+        res.status(403).send("Please reload the page to get a fresh CSRF token value.");
+    }else{
+        // hand off control to the next callback
+        return next(err);
+    }
+});
+
 // location of static content
 app.use(express.static(__dirname +  "/public"));
 
@@ -147,17 +158,6 @@ app.use(errorHandler({ dumpExceptions:true, showStack:true }));
 // Default-route middleware in case none of above match
 app.use(function (req, res) {
     res.status(404).send('<h3>File Not Found</h3>');
-});
-
-// error-handling Express middleware function
-app.use(function(err, req, res, next) {
-
-    if(err.code == 'EBADCSRFTOKEN'){
-        res.status(403).send("Please reload the page to get a fresh CSRF token value.");
-    }else{
-        // hand off control to the next callback
-        return next(err);
-    }
 });
 
 // Start HTTP server
