@@ -144,6 +144,7 @@ Backbone.View.prototype.close = function () {
 
 };
 
+/* //CSRF added code
 Backbone.ajax = function() {
     // Invoke $.ajaxSetup in the context of Backbone.$
     Backbone.$.ajaxSetup.call(Backbone.$, {beforeSend: function(jqXHR){
@@ -151,6 +152,7 @@ Backbone.ajax = function() {
     }});
     return Backbone.$.ajax.apply(Backbone.$, arguments);
 };
+*/
 
 splat.utils.loadTemplates(['Home', 'Header', 'About', 'MovieThumb',
 	'Details', 'MovieForm', 'MovieImg', 'Reviewer', 'ReviewsView',

@@ -21,7 +21,7 @@ var https = require("https"),
     errorHandler = require("errorhandler"),
     basicAuth = require("basic-auth-connect"),  // add for HTTP auth
 
-    csrftoken = require("csurf"),   // for CSRF token
+    // csrftoken = require("csurf"),   // for CSRF token //CSRF added code
 
     // config is an object module, that defines app-config attribues,
     // such as "port"
@@ -75,7 +75,7 @@ app.use(session({
         maxAge:config.sessionTimeout,  // A3 ADD CODE
 		// maxAge: null,  // no-expire session-cookies for testing
 		httpOnly: true,
-        secure: true, // add secure flag
+        // secure: true, // add secure flag //CSRF added code
     },
 	saveUninitialized: false,
 	resave: false
@@ -140,6 +140,7 @@ app.use(function (req, res) {
     res.status(404).send('<h3>File Not Found</h3>');
 });
 
+/* //CSRF added code
 // Setup for rendering csurf token into index.html at app-startup
 app.engine('.html', require('ejs').__express);
 app.set('views', __dirname + '/public');
@@ -159,6 +160,7 @@ app.use(function(err, req, res, next) {
         return next(err);
     }
 });
+*/
 
 // Start HTTP server
 var a = https.createServer(options, app).listen(app.get('port'), function (){
