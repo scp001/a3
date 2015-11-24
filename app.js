@@ -151,6 +151,7 @@ app.get('/index.html', function(req, res) {
 
 // error-handling Express middleware function
 app.use(function(err, req, res, next) {
+	console.log(err);
     if(err.code == 'EBADCSRFTOKEN'){
         res.status(403).send("Please reload the page to get a fresh CSRF token value.");
     }else{
