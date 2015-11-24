@@ -6,4 +6,6 @@ module.exports = {
 	dbuser: "songzhi",
 	dbpass: "songzhi",
 	dbname: "songzhi",
+	basicAuthUser: "songzhi",
+	basicAuthPass: "12345",
 }
