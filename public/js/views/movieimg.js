@@ -32,7 +32,7 @@ splat.MovieImg = Backbone.View.extend({
             this.imageRead(this.pictureFile, this.pictureFile.type);
         } else {
 	    this.showAlert('Error!', 'Please select an image file', 'alert-danger');
-	};
+	}
     },
 
     // Handle drag-n-drop of picture (following 4 methods)
@@ -45,8 +45,8 @@ splat.MovieImg = Backbone.View.extend({
 
     dragenterHandler: function(event) {
         var types = event.originalEvent.dataTransfer.types;
-        if (!types || (types.contains && types.contains("Files"))
-	    || (types.indexOf && types.indexOf("Files") !== -1)) {
+        if (!types || (types.contains && types.contains("Files")) ||
+            (types.indexOf && types.indexOf("Files") !== -1)) {
             $("#dropImage").addClass("active");
 	}
     },
@@ -63,13 +63,13 @@ splat.MovieImg = Backbone.View.extend({
 	// set object attribute for use by uploadPicture
         this.pictureFile = ev.dataTransfer.files[0];
 	// only process image files
-        if (this.pictureFile && this.pictureFile.type
-		&& this.pictureFile.type.indexOf("image") === 0) {
+        if (this.pictureFile && this.pictureFile.type &&
+            this.pictureFile.type.indexOf("image") === 0) {
             // Read image file from local file system and display in img tag
 	    this.imageRead(this.pictureFile, this.pictureFile.type);
         } else {
-	    this.showAlert('Error!', 'Please select an image file', 'alert-danger');
-	};
+	       this.showAlert('Error!', 'Please select an image file', 'alert-danger');
+	    }
         $("#dropImage").removeClass("active");
     },
 
@@ -97,10 +97,10 @@ splat.MovieImg = Backbone.View.extend({
     // Resize sourceImg, returning result as a DataURL value.  Type, and
     // quality are optional params for image-type and quality setting
     resize: function(sourceImg, type, quality, callback) {
-	var type = type || "image/jpeg";   // default MIME image type
+	    var type = type || "image/jpeg";   // default MIME image type
     	var quality = quality || "0.95";  // tradeoff of quality vs size
     	var image = new Image(), MAX_HEIGHT = 300, MAX_WIDTH = 450;
-	image.onload = function() {
+	    image.onload = function() {
     	    image.height *= MAX_HEIGHT / image.height;  // scale image
     	    image.width *= MAX_WIDTH / image.width;
     	    var canvas = document.createElement("canvas"); 
@@ -108,10 +108,10 @@ splat.MovieImg = Backbone.View.extend({
     	    canvas.height = image.height;
     	    var ctx = canvas.getContext("2d");  // get 2D rendering context
     	    ctx.drawImage(image, 0, 0, image.width, image.height);  // render
-	    if (callback) {
-		callback(canvas.toDataURL(type, quality));
+	        if (callback) {
+		        callback(canvas.toDataURL(type, quality));
+	        }
 	    };
-	};
     	image.src = sourceImg;
     }
 

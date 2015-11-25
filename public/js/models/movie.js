@@ -25,8 +25,8 @@ splat.Movie = Backbone.Model.extend({
             return (value && titleDirector.test(value)) ?
 		 {isValid: true}
 		 : {isValid: false,
-			message: 'Must be: one or more letters-digits-spaces'
-				+ ' with one or more of " ,.?-\'*" '};
+			message: 'Must be: one or more letters-digits-spaces' +
+               ' with one or more of " ,.?-\'*" '};
         };
 
         this.validators.released = function (value) {
@@ -40,8 +40,8 @@ splat.Movie = Backbone.Model.extend({
             return (value && titleDirector.test(value)) ?
 		 {isValid: true}
 		 : {isValid: false,
-			message: 'Must be: one or more letters-digits-spaces'
-				+ ' with one or more of " ,.?-\'*" '};
+			message: 'Must be: one or more letters-digits-spaces' +
+               ' with one or more of " ,.?-\'*" '};
         };
 
         this.validators.rating = function (value) {

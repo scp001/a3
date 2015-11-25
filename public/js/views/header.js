@@ -101,7 +101,7 @@ splat.Header = Backbone.View.extend({
         $('.nav li').removeClass('active');
         if (menuItem) {
             $('.' + menuItem).addClass('active');
-        };
+        }
     }
 
 });

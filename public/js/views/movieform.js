@@ -17,7 +17,6 @@ splat.MovieForm = Backbone.View.extend({
     // whereas "add" is a function associated with a MoviesView
     // In A2, invoked by Details view
     deleteMovie: function(event) {
-        var isnew = this.model.isNew();   // newly added model
         // delete Model
         this.model.destroy({
 	    // pass the model's userid field for server-side authorization check
@@ -26,7 +25,7 @@ splat.MovieForm = Backbone.View.extend({
 	    wait: true,  // don't destroy the model until server responds
             success: function(model, resp) {
               splat.app.navigate('/movies', {replace:true, trigger:true});
-              splat.utils.showAlert('Success', "Movie deleted", 'alert-success')
+              splat.utils.showAlert('Success', "Movie deleted", 'alert-success');
             },
             error: function(model, resp) {
                 splat.utils.requestFailed(resp);
@@ -56,9 +55,9 @@ splat.MovieForm = Backbone.View.extend({
               splat.utils.removeValidationError(event.target.name)
             : splat.utils.addValidationError(event.target.name, check.message);
 
-        splat.utils.showAlert('Note!', 'Movie attribute updated; '
-		+ 'to make changes permanent, click "Save Changes" button',
-		'alert-info');
+        splat.utils.showAlert('Note!', 'Movie attribute updated; ' +
+              'to make changes permanent, click "Save Changes" button',
+		      'alert-info');
     },
 
     // In A2, invoked by Details view
@@ -68,7 +67,7 @@ splat.MovieForm = Backbone.View.extend({
         if (check.isValid === false) {
             splat.utils.displayValidationErrors(check.messages);
             return false;
-        };
+        }
 	this.saveMovie();
     },
 
@@ -84,7 +83,7 @@ splat.MovieForm = Backbone.View.extend({
                     splat.app.navigate('movies/' + model.get('_id'),
 				{trigger:true, replace:true});
         	    model.reviews.url = '/movies/' + model.get('_id') + '/reviews';
-		};
+		}
                 splat.utils.showAlert('Success!', 'Movie saved', 'alert-success');
             },
             error: function (model, err) {

@@ -10,26 +10,25 @@ splat.Details = Backbone.View.extend({
     },
 
     render: function () {
-	var self = this;
         this.$el.html(this.template(this.model.toJSON()));
 
-	// render MovieForm subview
-	this.formView = new splat.MovieForm({model: this.model});
-	this.$('#movieform').append(this.formView.render().el);
+	   // render MovieForm subview
+	   this.formView = new splat.MovieForm({model: this.model});
+	   this.$('#movieform').append(this.formView.render().el);
 
-	// render MovieImg subview
-	this.imgView = new splat.MovieImg({model: this.model});
-	this.$('#movieimg').append(this.imgView.render().el);
+	   // render MovieImg subview
+	   this.imgView = new splat.MovieImg({model: this.model});
+	   this.$('#movieimg').append(this.imgView.render().el);
 
-	return this;
+	   return this;
     },
 
     beforeSave: function() {
-	this.formView.beforeSave();
+	   this.formView.beforeSave();
     },
 
     deleteMovie: function() {
-	this.formView.deleteMovie();
+	   this.formView.deleteMovie();
     },
 
     // remove subviews on close of Details view

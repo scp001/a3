@@ -26,7 +26,7 @@ splat.ReviewThumbs = Backbone.View.extend({
                 });
                 $(self.el).html(markup);
 	    });
-	};
+	}
 
 	return this;
     }

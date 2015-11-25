@@ -43,7 +43,7 @@ splat.utils = {
             var formGroup = $("textarea").parent();
         } else {
             var formGroup = $("input[name='" + field + "']").parent();
-        };
+        }
         formGroup.addClass('has-error');  // was 'error' in Bootstrap 2
         $('.help-block', formGroup).html(message);
     },
@@ -53,7 +53,7 @@ splat.utils = {
             var formGroup = $("textarea").parent();
         } else {
             var formGroup = $("input[name='" + field + "']").parent();
-        };
+        }
         formGroup.removeClass('has-error');  // was 'error' in Bootstrap 2
         $('.help-block', formGroup).html('');
     },
@@ -82,8 +82,8 @@ splat.utils = {
             $('#logindrop').removeClass('open');
             $('#addMovie').hide();  // unauth'd users can't add movies
         } else {
-	    splat.utils.showAlert('Error',  resp.responseText, 'alert-danger');
-	}
+	       splat.utils.showAlert('Error',  resp.responseText, 'alert-danger');
+	    }
     },
 
     // upload an image file using the HTML5 file API

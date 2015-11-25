@@ -30,7 +30,7 @@ splat.AppRouter = Backbone.Router.extend({
     home: function() {
         if (!this.homeView) {
             this.homeView = new splat.Home();
-        };
+        }
         splat.app.showView('#content', this.homeView);
 	// hilite "Splat!" in header
         this.headerView.selectMenuItem('home-menu'); 
@@ -39,7 +39,7 @@ splat.AppRouter = Backbone.Router.extend({
     about: function() {
         if (!this.aboutView) {
             this.aboutView = new splat.About();
-        };
+        }
         splat.app.showView('#content', this.aboutView);
         // hilite "About" in header
         this.headerView.selectMenuItem('about-menu');

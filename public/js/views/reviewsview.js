@@ -9,7 +9,7 @@ splat.ReviewsView = Backbone.View.extend({
             this.review = new splat.Review();
 	    this.review.set('movieid', this.model.get('_id'));
 	    // could alternatively get id from Backbone.history.getFragment()
-        };
+        }
 	this.reviews = this.collection;
 	// when a review is successfully saved (sync'd),
 	// update movie's freshness score and re-render ReviewThumbs subview
@@ -30,7 +30,7 @@ splat.ReviewsView = Backbone.View.extend({
     renderReviewer: function () {
 	if (this.reviewerview) {
 	    this.reviewerview.remove();
-	};
+	}
         this.reviewerview = new splat.Reviewer({
 	        model:this.review,
 	        collection:this.collection
@@ -42,7 +42,7 @@ splat.ReviewsView = Backbone.View.extend({
     renderReviews: function () {
 	if (this.reviewthumbs) {
 	    this.reviewthumbs.remove();
-	};
+	}
 
         this.reviewthumbs = new splat.ReviewThumbs({ 
             collection:this.collection
@@ -73,9 +73,9 @@ splat.ReviewsView = Backbone.View.extend({
 
     onClose: function() {
         // before closing view, remove child views
-        if (this.reviewerview) { this.reviewerview.remove() };
-        if (this.reviewthumbs) { this.reviewthumbs.remove() };
-        if (this.scoreview) { this.scoreview.remove() };
+        if (this.reviewerview) { this.reviewerview.remove(); }
+        if (this.reviewthumbs) { this.reviewthumbs.remove(); }
+        if (this.scoreview) { this.scoreview.remove(); }
     }
 
 });

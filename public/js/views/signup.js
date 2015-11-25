@@ -63,7 +63,7 @@ splat.Signup = Backbone.View.extend({
         if (check.isValid === false) {
             splat.utils.displayValidationErrors(check.messages);
             return false;
-        };
+        }
 
 	this.model.save(null, {
             wait: true,

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QUnit Test Suite</title>
+    <link rel="stylesheet" href="qunit.css">
+  </head>
+  <body>
+    <!-- placeholder div's to hold test report output -->
+    <h1 id="qunit-header">QUnit Test Suite</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests">test markup, hidden.</ol>
+    <div id="qunit-fixture"></div>
+
+    <!-- load libraries, including qunitjs -->
+    <script src="../js/lib/jquery-min.js"></script>
+    <script src="../js/lib/underscore-min.js"></script>
+    <script src="../js/lib/backbone-min.js"></script>
+    <script src="../js/lib/qunit.js"></script>
+    <script src="../js/lib/qunit-reporter-junit.js"></script>
+    <script src="../js/lib/sinon-1.15.0.js"></script>
+    <script src="../js/lib/sinon-qunit-1.0.0.js"></script>
+    <!-- Components to be tested -->
+    <script src="../js/models/user.js"></script>
+    <script src="../js/collections/reviews.js"></script>
+    <script src="../js/models/movie.js"></script>
+    <script src="../js/collections/movies.js"></script>
+    <!-- App tests -->
+    <script src="apptests.js"></script>
+  </body>
+</html>
