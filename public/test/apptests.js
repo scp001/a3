@@ -144,8 +144,11 @@ QUnit.jUnitReport = function(report) {
     });
   });
 
-test("test1", function(assert){});
-test("test2", function(assert){});
-test("asynchronous test1", function(assert){});
-test("asynchronous test2", function(assert){});
-test("asynchronous test3", function(assert){});
+// added test case
+test("Test movie-deletion succeeds if session is authenticated.", function(assert){});
+test("Test review-add triggers an error event if unauthenticated.", function(assert){});
+test("Test review model/collection add/save, and callback functions.", function(assert){
+
+});
+test("Image Resize?", function(assert){});
+test("User add?", function(assert){});
