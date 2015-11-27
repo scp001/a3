@@ -1,0 +1,2 @@
+It came to us that testing is most challenging and interesting one!
+It takes time to figure out to test all features.
