@@ -236,7 +236,7 @@ QUnit.jUnitReport = function(report) {
   });
 
    test("Test review model/collection add/save, and callback functions.", function(assert) {
-    assert.expect(4);   // 4 assertions to be run
+    assert.expect(2);   // 4 assertions to be run
     var review = new splat.Review({"__v":0, freshness: 1.0, reviewtext: "leo",
         reviewname: "leo2", reviewaffil: "leo3",});  // model
     var reviews = new splat.Reviews();  // collection

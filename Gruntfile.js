@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 	qunit: {
 	    all: {
 		options: {
-		    urls: ['http://mathlab.utsc.utoronto.ca:<%= pkg.port %>/test/test.html']
+		    urls: ['https://mathlab.utsc.utoronto.ca:<%= pkg.port %>/test/test.html']
 		}
 	    }
 	},

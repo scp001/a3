@@ -62,7 +62,7 @@ var app = express();
 app.set('port', process.env.PORT || config.port);
 
 // activate basic HTTP authentication (to protect your solution files)
-app.use(basicAuth(config.basicAuthUser, config.basicAuthPass));  
+//app.use(basicAuth(config.basicAuthUser, config.basicAuthPass));  
 
 // change param to control level of logging
 app.use(logger(config.env));  /* 'default', 'short', 'tiny', 'dev' */
