@@ -281,12 +281,12 @@ console.log('addReview ', typeof(movie), movie, movieErr, movieResult);
 		  }
 	      });
 	  });
-      } else if (err.err && err.err.indexOf("E11000") > -1) {
-            res.send(403, "Sorry, reviewer " +review.reviewname+ 
+      } else if (err.message.indexOf("E11000")> -1) {
+            res.status(403).send("Sorry, reviewer " +review.reviewname+ 
 		" affiliated with " +review.reviewaffil+ 
 		" already reviewed this movie");
       } else {
-            res.statue(500).send('Unable to save review at this time: please try again later '
+            res.status(500).send('Unable to save review at this time: please try again later '
                 + err.message);
       }
     });
