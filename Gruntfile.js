@@ -8,6 +8,7 @@ module.exports = function(grunt) {
 	    },
 	    build: {
 		src: [
+			'public/js/utils.js',
 		    'public/js/models/review.js',
 		    'public/js/models/movie.js',
 		    'public/js/models/user.js',
@@ -17,21 +18,20 @@ module.exports = function(grunt) {
 		    'public/js/collections/reviews.js',
 
 		    'public/js/views/about.js',
-		    'public/js/views/details.js',
 		    'public/js/views/header.js',
+			'public/js/views/signin.js',
+		    'public/js/views/signup.js',
 		    'public/js/views/home.js',
 		    'public/js/views/movie.js',
 		    'public/js/views/movieform.js',
-		    'public/js/views/movieimage.js',
+		    'public/js/views/movieimg.js',
 		    'public/js/views/movies.js',
 		    'public/js/views/reviewer.js',
+			"public/js/views/reviewthumbs.js",
 		    'public/js/views/reviewsview.js',
-		    'public/js/views/signin.js',
-		    'public/js/views/signup.js',
+			'public/js/views/details.js',
 
 		    'public/js/main.js',
-		    'public/js/utils.js',
-		    // A3 ADD CODE for other app JavaScript files
 		],
 		dest: 'public/js/<%= pkg.name %>-min.js'
 	    },
