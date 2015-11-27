@@ -38,6 +38,7 @@ module.exports = function(grunt) {
 	},
 
 	qunit: {
+	    options: {'--ignore-ssl-errors':true},
 	    all: {
 		options: {
 		    urls: ['https://mathlab.utsc.utoronto.ca:<%= pkg.port %>/test/test.html']
