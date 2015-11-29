@@ -1,1 +1,19 @@
 We finished everything and found that testing is pretty cool!
+- In public/index.html, local js files are changed to one line code: js/splat-min.js.
+- In public/index.html, token is passed to index.html by getting csrf token from server.
+- In app.js
+	- https is setup
+	- secrue flag is included
+	- csrftoken is created
+	- error message for refreshing token is handled
+- routes/splat.js
+	- bscript is setup
+	- everything for login is implemented
+- jshint report  is generated in public
+	- Some warnings are unnecessary to solve:
+		- "user strict"
+		- new line starts with :
+		- unused variables passed to callback functions
+- unglyfied file is generated in public/js
+- test files are in public/test, last five tests are added tests
+	
