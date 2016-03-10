@@ -16,4 +16,4 @@ We finished everything and found that testing is pretty cool!
 		- unused variables passed to callback functions
 - unglyfied file is generated in public/js
 - test files are in public/test, last five tests are added tests
-- test again
+- test again and again
